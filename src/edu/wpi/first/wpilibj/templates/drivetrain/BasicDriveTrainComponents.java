@@ -16,13 +16,13 @@ public class BasicDriveTrainComponents implements DriveTrainComponents {
     private final InvertibleSpeedController rightSpeedController;
     private final RobotDrive robotDrive;
     public BasicDriveTrainComponents() {
-        leftMaster = new InvertibleSpeedController(new Talon(7));
-        leftSlave = new InvertibleSpeedController(new Talon(8));
-        SpeedController[] leftArr = {leftMaster};
+        leftMaster = new InvertibleSpeedController(new Talon(8));
+        leftSlave = new InvertibleSpeedController(new Talon(7));
+        SpeedController[] leftArr = {leftMaster, leftSlave};
         leftSpeedController = new InvertibleSpeedController(new SpeedControllerGroup(leftArr));
         rightMaster = new InvertibleSpeedController(new Talon(9));
         rightSlave = new InvertibleSpeedController(new Talon(10));
-        SpeedController[] rightArr = {rightMaster};
+        SpeedController[] rightArr = {rightMaster, leftSlave};
         rightSpeedController = new InvertibleSpeedController(new SpeedControllerGroup(rightArr));
         robotDrive = new RobotDrive(leftSpeedController, rightSpeedController);
         robotDrive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, false);
